@@ -12,38 +12,107 @@ section{
         place-items: center;
     }
 
-    .box-transition{
-        transition: background-color .2s ease-in-out, transform .2s ease-in-out .2s;
+    .box-hover{
+        background-color: #3498db;
+        transition: .3s ease-in-out;
 
-        &:hover {
-            background-color: lightcoral;
+        &:hover{
+            background-color: #2ecc71;
             transform: scale(1.1);
+            box-shadow: 5px 5px 3px #00000030;
         }
     }
 
-    .box-animation{
-        animation: slide 3s; 
+    .barre {
+        background: #eee;
+        border-radius: 999px;
+        height: 12px;
+        width: 300px
+    }
+
+    .remplissage {
+        height: 100%;
+        width: 5%;
+        border-radius: 999px;
+        background: #3498db;    
+        transition: .8s ease-in-out;
+    }
+
+    .barre:hover .remplissage {
+        width: 75%;
+    }
+
+    .throbber {
+        width: 50px;
+        margin-left: 20px;
+
+        animation: spinning .8s;
         animation-iteration-count: infinite;
         animation-timing-function: linear;
-        animation-direction: alternate;
     }
-    
-    .box-container{
-        display: flex;
-        justify-content: start;
-        align-items: start;
-        background-color: #cfcfcf;
 
-        &:hover > .box-remplissage {
-            transform:scaleX(100%);
+    .pulse {
+        animation: pulse .8s;
+        animation-iteration-count: infinite;
+    }
+
+    .card {
+        width: 20vw;
+        animation: reveal 2s forwards;
+        border-radius: 1vw;
+        transform: rotateY(.25turn);
+        margin: 0 2vw
+    }
+
+    #card1 {
+        animation-delay: 1s;
+    }
+    #card2 {
+        animation-delay: 1.5s;
+    }
+    #card3 {
+        animation-delay: 2s;
+    }
+
+    #button {
+        width: 200px;
+        padding: 2px;
+        text-align: center;
+        background-color: #c2c1f3;
+        border-radius: 20px;
+        transition: .3s;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #545391;
+            color: #fff;
         }
     }
 
-    .box-remplissage{
-        transform: scaleX(0);
-        transition: .2s;
+    .popup {
+        position: fixed;
+        display: flex;
+        top: 0;
+        left: 0;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        min-height: 100vh;
+        user-select: none;
+        pointer-events: none;
+
+        transform: scale(0);
+        transition: .4s;
     }
 
+    .popup img{
+        width: 40vw;
+        box-shadow: 2px 2px 10px #00000080;
+    }
+
+    .popup.view {
+        transform: scale(1);
+    }
 }    
 
 @keyframes slide {
@@ -73,5 +142,47 @@ section{
 
     100% {
         transform: rotate(1turn)
+    }
+}
+
+@keyframes spinning {
+    0% {
+        rotate: 0;
+    }
+    50% {
+        rotate: .5turn;
+    }
+    100%{
+        rotate: 1turn;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        color: #0400ff;
+    }
+
+    50% {
+        transform: scale(.8);
+        color: #000;
+    }
+
+    100% {
+        transform: scale(1);
+        color: #0400ff;
+    }
+}
+
+@keyframes reveal {
+    0% {
+        transform: rotateY(.25turn);
+    }
+    50% {
+        transform: rotateY(0) scale(1.1);
+        box-shadow: 5px 5px 3px #00000040;
+    }
+    100% {
+        transform: rotateY(0) scale(1);
     }
 }
