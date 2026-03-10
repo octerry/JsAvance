@@ -35,6 +35,19 @@ saveButton.addEventListener('click', function(){
 })
 
 
+if (localStorage.getItem('buttonTextSize')) {
+    textInput.value = localStorage.getItem('buttonTextSize')
+}
+if (localStorage.getItem('buttonBorderRadius')) {
+    borderInput.value = localStorage.getItem('buttonBorderRadius')
+}
+if (localStorage.getItem('buttonPadding')) {
+    paddingInput.value = localStorage.getItem('buttonPadding')
+}
+if (localStorage.getItem('buttonBgColor')) {
+    colorInput.value = localStorage.getItem('buttonBgColor')
+}
+
 let size = textInput.value/5 + 10 + "px"
 let radius = borderInput.value/5 + "px"
 let padding = paddingInput.value/10 + 5 + "px"
@@ -48,22 +61,26 @@ textInput.addEventListener('input', function(){
     let size = this.value/5 + 10 + "px"
     root.style.setProperty("--buttonTextSize", size)
     varInputs[0].children[2].innerHTML = size
+    localStorage.setItem('buttonTextSize', this.value)
 })
 
 borderInput.addEventListener('input', function(){
     let radius = this.value/5 + "px"
     root.style.setProperty("--buttonBorderRadius", radius)
     varInputs[1].children[2].innerHTML = radius
+    localStorage.setItem('buttonBorderRadius', this.value)
 })
 
 paddingInput.addEventListener('input', function(){
     let padding = this.value/10 + 5 + "px"
     root.style.setProperty("--buttonPadding", padding)
     varInputs[2].children[2].innerHTML = padding
+    localStorage.setItem('buttonPadding', this.value)
 })
 
 colorInput.addEventListener('input', function(){
     let color = this.value
     console.log(color)
     root.style.setProperty("--buttonBgColor", color)
+    localStorage.setItem('buttonBgColor', this.value)
 })
