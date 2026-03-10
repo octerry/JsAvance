@@ -44,7 +44,11 @@ section{
 
     .throbber {
         width: 50px;
+        height: 50px;
         margin-left: 20px;
+        border-radius: 50%;
+        background-color: transparent;
+        border-top: 1px #000 solid;
 
         animation: spinning .8s;
         animation-iteration-count: infinite;
@@ -52,6 +56,11 @@ section{
     }
 
     .pulse {
+        text-align: center;
+        width: 200px;
+        padding: 1px;
+        background-color: rgb(153, 183, 219);
+        border-radius: 100px;
         animation: pulse .8s;
         animation-iteration-count: infinite;
     }
@@ -64,13 +73,13 @@ section{
         margin: 0 2vw
     }
 
-    #card1 {
+    .card:nth-child(1) {
         animation-delay: 1s;
     }
-    #card2 {
+    .card:nth-child(2) {
         animation-delay: 1.5s;
     }
-    #card3 {
+    .card:nth-child(3) {
         animation-delay: 2s;
     }
 
@@ -92,12 +101,10 @@ section{
     .popup {
         position: fixed;
         display: flex;
-        top: 0;
-        left: 0;
+        bottom: 32px;
+        right: 32px;
         align-items: center;
         justify-content: center;
-        width: 100vw;
-        min-height: 100vh;
         user-select: none;
         pointer-events: none;
 
@@ -106,7 +113,7 @@ section{
     }
 
     .popup img{
-        width: 40vw;
+        width: 30vh;
         box-shadow: 2px 2px 10px #00000080;
     }
 
