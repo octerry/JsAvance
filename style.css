@@ -120,6 +120,31 @@ section{
     .popup.view {
         transform: scale(1);
     }
+
+    #storage {
+        background-color: #677b6f;
+        width: fit-content;
+        padding: 1px 10px;
+        border-radius: 20px;
+    }
+
+    #welcome_txt {
+        display: none;
+    }
+
+    #save_button {
+        text-align: center;
+        color: #fff;
+        background-color: #729881;
+        border-radius: 20px;
+        transition: .4s;
+        margin: -5px 0;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #2ecc71;
+        }
+    }
 }    
 
 @keyframes slide {
