@@ -1,3 +1,10 @@
+:root {
+    --buttonBgColor : #9292c0;
+    --buttonPadding : 5px;
+    --buttonTextSize : 10px;
+    --buttonBorderRadius : 5px;
+}
+
 body {
     background-color: #fff;
 }
@@ -129,6 +136,7 @@ section{
     }
 
     #welcome_txt {
+        color: #fff;
         display: none;
     }
 
@@ -144,6 +152,35 @@ section{
             cursor: pointer;
             background-color: #2ecc71;
         }
+    }
+
+    #var_button {
+        width: fit-content;
+        height: var(--buttonTextSize);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--buttonBgColor);
+        color: #fff;
+        padding: var(--buttonPadding);
+        font-size: var(--buttonTextSize);
+        border-radius: var(--buttonBorderRadius);
+        transition: .4s;
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+            box-shadow: 5px 5px 3px #00000040;
+        }
+    }
+
+    .var_input {
+        display: flex;
+        align-items: center;
+    }
+
+    .var_input input {
+        margin-left: 5px;
     }
 }    
 
