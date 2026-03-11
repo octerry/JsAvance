@@ -1,15 +1,21 @@
 let form = document.querySelector('form')
+let pseudo = document.querySelector('#pseudo')
+console.log(localStorage.getItem('pseudo'))
+if(localStorage.getItem('pseudo')) {pseudo.value = localStorage.getItem('pseudo')}
+let email = document.querySelector('#email')
+if(localStorage.getItem('email')) {email.value = localStorage.getItem('email')}
+let password = document.querySelector('#password')
+let password2 = document.querySelector('#password2')
+
 form.addEventListener('submit', event => {
     event.preventDefault();
-    
-    let pseudo = document.querySelector('#pseudo')
-    let email = document.querySelector('#email')
-    let password = document.querySelector('#password')
-    let password2 = document.querySelector('#password2')
     
     let messageError = document.querySelector('.message-error')
     messageError.style.display = 'none'
     messageError.innerHTML = ''
+    let messageSuccess = document.querySelector('.message-success')
+    messageSuccess.style.display = 'none'
+    let verified = 0
 
     let passCheck = new RegExp(
         "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$"
@@ -30,6 +36,8 @@ form.addEventListener('submit', event => {
         // pseudo success
         pseudo.classList.add('success')
         pseudo.classList.remove('error')
+        localStorage.setItem('pseudo', pseudo.value)
+        verified++
     }
 
     if(email.value == ''){
@@ -44,9 +52,10 @@ form.addEventListener('submit', event => {
         // email success
         email.classList.add('success')
         email.classList.remove('error')
+        localStorage.setItem('email', email.value)
+        verified++
     }
 
-    console.log(password.value.length)
     if(password.value.length < 10 || passCheck.test(password.value) == false) {
         // password error
         password.classList.add('error')
@@ -59,6 +68,7 @@ form.addEventListener('submit', event => {
         // password success
         password.classList.add('success')
         password.classList.remove('error')
+        verified++
     }
 
     if(password2.value.length === 0 || password.value != password2.value) {
@@ -73,5 +83,10 @@ form.addEventListener('submit', event => {
         // password2 success
         password2.classList.add('success')
         password2.classList.remove('error')
+        verified++
+    }
+
+    if(verified == 4) {
+        messageSuccess.style.display = "block"
     }
 })
