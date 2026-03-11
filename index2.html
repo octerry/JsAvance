@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script type="text/javascript">
+        const lightbox = GLightbox({ ...options });
+    </script>
+    
+    <link rel="stylesheet" href="style2.css">
+    <script defer src="script2.js"></script>
+</head>
+    <body>
+        <h1>SwiperJS</h1>
+        <!-- Slider main container -->
+        <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            ...
+        </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- If we need scrollbar -->
+            <div class="swiper-scrollbar"></div>
+        </div>
+        <h1>Glightbox</h1>
+        <!-- Simple image -->
+    <a href="large.jpg" class="glightbox">
+    <img src="source/small.jpg" alt="image" />
+    </a>
+
+    <!-- Video -->
+    <a href="https://vimeo.com/115041822" class="glightbox2">
+    <img src="source/small.jpg" alt="image" />
+    </a>
+
+    <!-- Gallery -->
+    <a href="large.jpg" class="glightbox3" data-gallery="gallery1">
+    <img src="source/small.jpg" alt="image" />
+    </a>
+    <a href="video.mp4" class="glightbox3" data-gallery="gallery1">
+    <img src="source/small.jpg" alt="image" />
+    </a>
+
+    <!-- Simple Description -->
+    <a href="large.jpg" class="glightbox4" data-glightbox="title: My title; description: this is the slide description">
+    <img src="source/small.jpg" alt="image" />
+    </a>
+
+    <!-- Advanced Description -->
+    <a href="large.jpg" class="glightbox5" data-glightbox="title: My title; description: .custom-desc1">
+    <img src="source/small.jpg" alt="image" />
+    </a>
+
+    <div class="glightbox-desc custom-desc1">
+    <p>The content of this div will be used as the slide description</p>
+    <p>You can add links and any HTML you want</p>
+    </div>
+
+    <!-- URL with no extension -->
+    <a href="https://picsum.photos/1200/800" data-glightbox="type: image">
+    <img src="source/small.jpg" alt="image" />
+    </a>
+    <!-- OR using multiple data attributes -->
+    <a href="https://picsum.photos/1200/800" data-type="image">
+    <img src="source/small.jpg" alt="image" />
+    </a>
+
+    <!-- Using responsive images: specify sizes and srcset through data attributes in the
+        same way you would with the img tag.
+        See: https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images -->
+    <a href="default.jpg" class="glightbox6" data-title="Responsive example"
+    data-description="Your browser will choose the optimal image for the resolution"
+    data-sizes="(max-width: 600px) 480px, 800px"
+    data-srcset="img480.jpg 480w, img800.jpg 800w">
+    <img src="source/small.jpg" alt="image" />
+    </a>
+</body>
+</html>

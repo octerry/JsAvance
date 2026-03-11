@@ -154,6 +154,15 @@ section{
         }
     }
 
+    #edit_title {
+        font-size: calc( var(--buttonTextSize) + 10px);
+        color: var(--buttonBgColor)
+    }
+
+    #edit_p {
+        font-size: calc( var(--buttonTextSize) /2);
+    }
+
     #var_button {
         width: fit-content;
         height: var(--buttonTextSize);
@@ -165,7 +174,7 @@ section{
         padding: var(--buttonPadding);
         font-size: var(--buttonTextSize);
         border-radius: var(--buttonBorderRadius);
-        transition: .4s;
+        transition: transform .4s, box-shadow .4s;
 
         &:hover {
             cursor: pointer;
