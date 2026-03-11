@@ -1,86 +1,77 @@
-const button = document.getElementById('button');
-const popupWindow = document.getElementsByClassName('popup')[0]
+let form = document.querySelector('form')
+form.addEventListener('submit', event => {
+    event.preventDefault();
+    
+    let pseudo = document.querySelector('#pseudo')
+    let email = document.querySelector('#email')
+    let password = document.querySelector('#password')
+    let password2 = document.querySelector('#password2')
+    
+    let messageError = document.querySelector('.message-error')
+    messageError.style.display = 'none'
+    messageError.innerHTML = ''
 
-const saveButton = document.getElementById("save_button")
-const nameInput = document.getElementById("name_input")
-const welcomeTxt = document.getElementById("welcome_txt")
-const nameValue = localStorage.getItem('name')
+    let passCheck = new RegExp(
+        "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$"
+    )
+    // let emailCheck = new RegExp(
+    //     "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+    // )
 
-const root = document.documentElement
-const varInputs = document.getElementsByClassName('var_input')
-const textInput = varInputs[0].children[1]
-const borderInput = varInputs[1].children[1]
-const paddingInput = varInputs[2].children[1]
-const colorInput = varInputs[3].children[1]
-
-button.addEventListener('click', function(){
-    popupWindow.classList.add('view')
-
-    setTimeout(() => {
-        popupWindow.classList.remove('view')
-    }, 3000);
-})
-
-if (nameValue) {
-    welcomeTxt.style.display = "block"
-    welcomeTxt.innerHTML = "Bienvenue, " + nameValue
-}
-
-saveButton.addEventListener('click', function(){
-    if (nameInput.value) {
-        localStorage.setItem('name',nameInput.value)
+    if(pseudo.value == '' || pseudo.value.length < 6) {
+        // pseudo error
+        pseudo.classList.add('error')
+        pseudo.classList.remove('success')
+        let li = document.createElement("li");
+        li.innerHTML = "Pseudo trop court"
+        messageError.appendChild(li)
+        messageError.style.display = "block"
     } else {
-        alert("Vous devez remplir le champ de votre prénom")
+        // pseudo success
+        pseudo.classList.add('success')
+        pseudo.classList.remove('error')
     }
-})
 
+    if(email.value == ''){
+        // email error
+        email.classList.add('error')
+        email.classList.remove('success')
+        let li = document.createElement("li");
+        li.innerHTML = "Champ email vide"
+        messageError.appendChild(li)
+        messageError.style.display = "block"
+    } else {
+        // email success
+        email.classList.add('success')
+        email.classList.remove('error')
+    }
 
-if (localStorage.getItem('buttonTextSize')) {
-    textInput.value = localStorage.getItem('buttonTextSize')
-}
-if (localStorage.getItem('buttonBorderRadius')) {
-    borderInput.value = localStorage.getItem('buttonBorderRadius')
-}
-if (localStorage.getItem('buttonPadding')) {
-    paddingInput.value = localStorage.getItem('buttonPadding')
-}
-if (localStorage.getItem('buttonBgColor')) {
-    colorInput.value = localStorage.getItem('buttonBgColor')
-}
+    console.log(password.value.length)
+    if(password.value.length < 10 || passCheck.test(password.value) == false) {
+        // password error
+        password.classList.add('error')
+        password.classList.remove('success')
+        let li = document.createElement("li");
+        li.innerHTML = "Mot de passe invalide"
+        messageError.appendChild(li)
+        messageError.style.display = "block"
+    } else {
+        // password success
+        password.classList.add('success')
+        password.classList.remove('error')
+    }
 
-let size = textInput.value/5 + 10 + "px"
-let radius = borderInput.value/5 + "px"
-let padding = paddingInput.value/10 + 5 + "px"
-let color = colorInput.value
-root.style.setProperty("--buttonTextSize", size)
-root.style.setProperty("--buttonBorderRadius", radius)
-root.style.setProperty("--buttonPadding", padding)
-root.style.setProperty("--buttonBgColor", color)
-
-textInput.addEventListener('input', function(){
-    let size = this.value/5 + 10 + "px"
-    root.style.setProperty("--buttonTextSize", size)
-    varInputs[0].children[2].innerHTML = size
-    localStorage.setItem('buttonTextSize', this.value)
-})
-
-borderInput.addEventListener('input', function(){
-    let radius = this.value/5 + "px"
-    root.style.setProperty("--buttonBorderRadius", radius)
-    varInputs[1].children[2].innerHTML = radius
-    localStorage.setItem('buttonBorderRadius', this.value)
-})
-
-paddingInput.addEventListener('input', function(){
-    let padding = this.value/10 + 5 + "px"
-    root.style.setProperty("--buttonPadding", padding)
-    varInputs[2].children[2].innerHTML = padding
-    localStorage.setItem('buttonPadding', this.value)
-})
-
-colorInput.addEventListener('input', function(){
-    let color = this.value
-    console.log(color)
-    root.style.setProperty("--buttonBgColor", color)
-    localStorage.setItem('buttonBgColor', this.value)
+    if(password2.value.length === 0 || password.value != password2.value) {
+        // password2 error
+        password2.classList.add('error')
+        password2.classList.remove('success')
+        let li = document.createElement("li");
+        li.innerHTML = "Le second mot de passe ne correspond pas"
+        messageError.appendChild(li)
+        messageError.style.display = "block"
+    } else {
+        // password2 success
+        password2.classList.add('success')
+        password2.classList.remove('error')
+    }
 })
